@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>Tabs</title>
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <div id="app">
+      <h1>{{ msg }}</h1>
+      <section class="wrapper">
+        <div class="wrp-btn">
+          <button class="tab" :class="{ active: currentTab === index }" type="button" v-for="(tab, index) in tabs"
+            :key="tab" @click="onClickTab(index)">
+            {{ tab }}
+          </button>
+        </div>
+
+        <div class="content">
+          <div v-if="preloader">loading...</div>
+          <p v-else class="text" :class="textColor">{{ content }}</p>
+
+          <button class="btn-color" v-if="currentTab > 0" type="button"
+            @click="onClickButtonChangeColor">{{ buttonText }}</button>
+        </div>
+      </section>
+    </div>
+
+  </main>
+  <footer></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
